@@ -1,0 +1,117 @@
+﻿###############################################################################
+## APLICACIÓN DE GESTIÓN DE ALUMNOS Y MATRICULACIONES
+## Requires PHP 7.x, MySQL 5.4.x
+## v0.1 - 08/04/2019
+##
+## (c)Juan Luis Ramírez Tutor
+## Email: juanluis.ramirez.tutor@gmail.com
+## GitHub: https://github.com/jlrtutor
+## LinkedIn: https://es.linkedin.com/in/juan-luis-ramirez-tutor
+###############################################################################
+
+# INSTRUCCIONES PARA LA PUESTA EN MARCHA
+1. Crear base de datos vacía
+    | nombre: university
+    | usuario: root
+    | contraseña: [vacía]
+
+2. Si los datos de conexión deben ser diferentes, editar el fichero /app/config.php
+
+3. Ejecutar "database.sql" en el gestor de BD.
+
+4. La aplicación está configurada para ejecutarse en un directorio llamado "university-app", por
+lo que la URL de acceso sería:
+    http://localhost/university-app
+
+5. Si se ha instalado en un directorio diferente, debe cambiarse la ruta en 
+el archivo /app/config.php, línea 2
+define( 'BASE_URL', '/university-app/');  //WEB directory, external path url
+
+6. LOGIN. Al entrar en la aplicación pedirá los datos de acceso, que son:
+    | usuario: root@root.com
+    | contraseña: admin
+
+7. Ejecuta: composer install
+para descargar e instalar todos los paquetes y dependencias necesarias
+
+
+###############################################################################
+## DESCRIPCIÓN FUNCIONAL BREVE DE LA APLICACIÓN
+###############################################################################
+
+La aplicación consta de 3 módulos.
+1. Módulo de gestión de Cursos académicos.
+2. Gestión de Asignaturas
+3. Gestión de Estudiantes
+    3.1 - Gestión de matriculaciones/notas
+
+Para hacer la aplación algo más flexible, se ha optado por añadir los cursos académicos,
+de forma que los estudiantes se pueden "matricular" cada año en un curso. Dependiendo
+del curso matriculado, tendrá asociado una serie de asignaturas, que deberá aprobar para
+considerarse el curso como "completado" al 100% (todas las asignaturas con nota >= 5).
+
+
+
+
+###############################################################################
+## DESCRIPCIÓN TÉCNICA BREVE DE LA APLICACIÓN
+###############################################################################
+
+Esta aplicación está realizada siguiendo el patrón MVC.
+
+Consta de un motor básico, o Core, que se encarga, básicamente, de inicializar
+el motor y las instancias necesarias para que funcione las sesiones, la base /
+de datos, el motor de plantillas y el ruteador.
+
+Se ha usado Composer para instalar las dependencias siguientes:
+    - AdminLTE, como plantilla principal de la administración
+    - Smarty, como motor de plantillas
+    - Altorouter, como dispatcher de rutas
+    - josantonius, como gestor de sesiones
+
+Se ha usado PDO como capa de conexión con la base de datos (MySQL)
+
+El Framework utilizado es de diseño propio y pensado en el desarrollo rápido/
+de aplicaciones Web.
+Implementa un sistema de definición basado en modelo de datos, donde se defi/
+ne principalmente los campos que forman parte de la entidad o modelo de la BD
+y, además, posibilita definir el tipo de dato y características extras del //
+campo, con lo que es suficiente información para realizar la validación auto-
+mática de los datos. 
+
+Por ejemplo:
+
+$this->field('id', 'integer', ['PK'=>true, 'validate'=>false] );
+$this->field('student_id', 'integer', ['FK'=>true]);
+$this->field('course_id', 'integer', ['FK'=>true]);
+$this->field('level', 'integer');
+$this->field('date_of_creation', 'date', [ 'validate'=>false,
+                                            'required'=>false, 
+                                            'default'=>date('Y-m-d')]);
+
+Aquí vemos la definición de la tabla "Matriculaciones", que consta de un ID, 
+una Foreign Key de estudiante, una Foreign Key de Curso, un campo para defi-
+nir el curso (1º, 2º...) donde se matricula y un campo de tipo fecha.
+
+Al definir 'student_id' y 'course_id' como FK, podemos hacer lo siguiente:
+//Cargamos un registro de tipo matriculación
+$obj_matriculacion = new Matriculacion($id);
+//Hacemos un binding con la tabla Students para sacar el nombre del estudiante
+echo "El nombre del estudiante matriculado es: " . $obj_matriculacion->getStudent()->nombre;
+
+Que tiene, como principal ventaja, el no tener que realizar consultas adicionales,
+encargándose el sistema de realizar la búsqueda del ID en la tabla secundaria...
+
+
+###############################################################################
+## ESTRUCTURA DE LA APLICACIÓN
+###############################################################################
+
+/app
+    /Http
+        /Controllers
+        /Models
+    /public
+        /views
+            //...
+/vendor

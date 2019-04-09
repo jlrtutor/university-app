@@ -1,0 +1,23 @@
+{
+    "name": "life2016/bootstrap-tagsinput",
+    "authors": [
+        {
+            "name": "ran.",
+            "email": "r503948796@163.com"
+        }
+    ],
+    "require": {},
+    "cleanup": [
+        "README.md",
+        "LICENSE",
+        "CHANGELOG.md",
+        "phpunit.xml.dist",
+        "composer.json",
+        "bower.json",
+        ".gitignore",
+        ".htaccess",
+        ".idea",
+        "nbproject"
+    ],
+    "skip_autoload": "true"
+}

@@ -1,0 +1,46 @@
+.top-50 { padding-top: 50px; }
+.mtop-20 { margin-top: 20px; }
+.pl-0 { padding-left: 0px !important; }
+
+/* LOGIN */
+.login-container{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(to top, #928e8e 0%, #bbbbbb 100%);
+}
+.login-box-body{
+    -webkit-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.2);
+}
+
+/* FORMS */
+/* ERROR */
+.error {
+    border-color: red !important;
+}
+
+/* LISTS */
+.fa-toggle-on{ color:green !important }
+.fa-toggle-off{ color: red }
+.toggle-active{ cursor:pointer; cursor:hand }
+
+/* SIDEBAR */
+.item-active{
+    color:white !important;
+}
+.navbar-nav>.user-menu>.dropdown-menu>li.user-header {
+    height: 200px;
+}
+.navbar-nav>.user-menu>.dropdown-menu>li.user-header>p {
+    font-size: 14px;
+}
+
+/* STUDENT COURSE */
+.input-sm {
+    height:30px;
+}
+.table tr td .progress {
+    margin-top: 9px;
+}

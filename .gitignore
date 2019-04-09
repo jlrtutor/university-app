@@ -1,0 +1,5 @@
+vendor/*
+components/*
+
+app/public/views/templates_c/*
+app/public/views/cache/*
