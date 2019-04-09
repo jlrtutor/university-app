@@ -3,12 +3,12 @@ Application for manage courses, subjects, students, grades and registrations
 
 Requires PHP 7.x, MySQL 5.4.x
 v0.1 - 08/04/2019
-
+```
 (c)Juan Luis Ramírez Tutor
 Email: juanluis.ramirez.tutor@gmail.com
 GitHub: https://github.com/jlrtutor
 LinkedIn: https://es.linkedin.com/in/juan-luis-ramirez-tutor
-
+```
 
 Feel free to use this application to manage a small school, institute, academy
 or similar, where you have to control the student registration, grades, etc...
@@ -88,7 +88,7 @@ echo "And he courses " . $obj_registration->getCourse()->name;
 
 ## App structure
 ----------------
-
+```
 /app
     /Http
         /Controllers
@@ -97,4 +97,4 @@ echo "And he courses " . $obj_registration->getCourse()->name;
         /views
             //...
 /vendor
-
+```
