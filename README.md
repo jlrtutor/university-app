@@ -1,10 +1,8 @@
 ﻿Application for manage courses, subjects, students, grades and registrations
 ============================================================================
 
-Requires PHP 7.x, MySQL 5.4.x
-
+Requires PHP 7.x, MySQL 5.4.x 
 v0.1 - 08/04/2019
-
 ```
 (c)Juan Luis Ramírez Tutor
 Email: juanluis.ramirez.tutor@gmail.com
@@ -20,7 +18,7 @@ Please, report any issue you have using this application.
 
 
 #Installation
--------------
+----------------------------
 
 1. Create an empty database
 ```
@@ -90,7 +88,7 @@ echo "And he courses " . $obj_registration->getCourse()->name;
 
 ## App structure
 ----------------
-
+```
 /app
     /Http
         /Controllers
@@ -99,3 +97,4 @@ echo "And he courses " . $obj_registration->getCourse()->name;
         /views
             //...
 /vendor
+```
