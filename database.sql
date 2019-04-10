@@ -51,9 +51,9 @@ CREATE TABLE IF NOT EXISTS `students` (
 DELETE FROM `students`;
 /*!40000 ALTER TABLE `students` DISABLE KEYS */;
 INSERT INTO `students` (`id`, `name`, `surname`, `birthdate`, `genre`, `email`, `created_at`, `updated_at`, `deleted_at`, `dni`, `address`, `cp`, `town`, `province`, `telephone`, `delete`) VALUES
-	(1, 'Juan Luis', 'Ramírez Tutor', '1975-03-29', 'male', 'juanluis.ramirez.tutor@gmail.com', '2019-02-02 18:08:24', '2019-04-06 18:53:49', NULL, '28678675K', 'Avda. de La Palmera, 5, 2º4', '41005', 'Sevilla', 'Sevilla', '667543456,653525657', 0),
-	(14, 'Carlos', 'Vázquez', '1979-12-23', 'male', 'carlos.granados.v@gmail.com', '2019-02-23 22:24:42', '2019-02-25 23:17:52', NULL, '28654090K', 'Avda. de Hytasa, 132, 2ºizq', '41100', 'Sevilla', 'Sevilla', '654565182', 0),
-	(16, 'Alejandra', 'García Roldán', '1979-07-28', 'female', 'alejandragroldan@gmail.com', '2019-02-25 23:52:28', NULL, NULL, '28975565K', 'Avda. de La Palmera 12', '41008', 'Sevilla', 'Sevilla', '672151029', 0);
+	(1, 'Juan Luis', 'Ramírez Torres', '1978-01-29', 'male', 'juanluis.ramirez.torres@gmail.com', '2019-02-02 18:08:24', '2019-04-06 18:53:49', NULL, '58678675K', 'Avda. de La Real Plaza, 2, 2º4', '41005', 'Sevilla', 'Sevilla', '565345345,253525657', 0),
+	(14, 'Carlos Juan', 'Vázquez Hermoso', '1979-12-23', 'male', 'carlos.granados.v@gmail.com', '2019-02-23 22:24:42', '2019-02-25 23:17:52', NULL, '58654090K', 'Avda. de Hytasa, 132, 2ºizq', '41100', 'Sevilla', 'Sevilla', '254565182', 0),
+	(16, 'Alejandra Lucía', 'Garrido Roldán', '1979-07-28', 'female', 'alejandragroldan@gmail.com', '2019-02-25 23:52:28', NULL, NULL, '58975565K', 'Avda. de La Palmera Real 12', '41008', 'Sevilla', 'Sevilla', '372151029', 0);
 /*!40000 ALTER TABLE `students` ENABLE KEYS */;
 
 -- Volcando estructura para tabla university.students_courses
@@ -186,7 +186,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `surname`, `email`, `password`, `date_of_creation`, `comments`) VALUES
-	(1, 'Admin', 'University', 'root@root.com', 'vppa1glcBKnhg', '2019-02-06 21:18:15', 'Juan Luis Ramírez Tutor</br>\r\n<strong>FullStack PHP Developer</strong></br>\r\n<small>Programming since 1997</small>');
+	(1, 'Admin', 'University', 'root@root.com', 'vppa1glcBKnhg', '2019-02-06 21:18:15', 'Juan Luis Ramírez T.</br>\r\n<strong>FullStack PHP Developer</strong></br>\r\n<small>Programming since 1997</small>');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
