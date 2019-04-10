@@ -1,5 +1,5 @@
-﻿Application for manage courses, subjects, students, grades and registrations
-============================================================================
+Courses management application, with subjects, students, grades and registrations support
+=========================================================================================
 
 Requires PHP 7.x, MySQL 5.4.x 
 v0.1 - 08/04/2019
@@ -11,9 +11,9 @@ LinkedIn: https://es.linkedin.com/in/juan-luis-ramirez-tutor
 ```
 
 Feel free to use this application to manage a small school, institute, academy
-or similar, where you have to control the student registration, grades, etc...
+or similar, where you have to control the student's registration, grades, etc...
 
-Please, report any issue you have using this application.
+Please, report any issue you may have using this application.
 
 
 
@@ -24,14 +24,14 @@ Please, report any issue you have using this application.
 ```
     | name: university
     | user: root
-    | password: [vacía]
+    | password: [empty]
 ```
 
 2. Change config database, if required, at file */app/config.php*
 
 3. Upload and execute "*database.sql*" onto your database.
 
-4. The application is prepared to run into a folde called "university-app", so the 
+4. The application is prepared to run into a folder called "university-app", so the 
 URL would be:
 http://localhost/university-app
 
@@ -57,11 +57,11 @@ to download and install all packages and dependencies.
 ##Technical notes
 -----------------
 
-The used Framework is self-developed, thinking on an easy and fast development. 
+The framework used in this project was created from scratch, thinking on an easy and fast development. 
 
 It implements a system based on a data model, where you define basically all
 the fields that the model needs and its relationships with other tables or entities.
-So, the system can validate data automatically, por example:
+So, the system can validate data automatically, for example:
 
 ```php
 $this->field('id', 				'integer', ['PK'=>true, 'validate'=>false] );
@@ -73,7 +73,7 @@ $this->field('date_of_creation','date', [ 'validate'=>false,
                                           'default'=>date('Y-m-d') ] );
 ```
 
-Here you can see the entity *registrations* and its fields and relationship with
+Here you can see the entity *registrations* and its fields and relationships with
 other tables, like *Student* and *Course*.
 
 These relationships make it easier to obtain information from foreign tables:
