@@ -1,9 +1,11 @@
 <?php
 namespace App\Http\Controllers;
 
+
 use App\Core;
-use App\Http\Controllers\Controller;
 use App\Http\Models;
+use App\Http\Controllers\Controller;
+
 
 require BASE_PATH . '/app/Http/Models/subject.php';
 
@@ -16,7 +18,9 @@ Class SubjectController extends Controller
         $this->__module = 'subject';
 
         if(!Core::session()->get('user'))
+        {
             header('Location: ' . Core::router()->generate('login'));
+        }
         
         Core::smarty()->assign('__module', $this->__module);
         Core::smarty()->assign('_USER', Core::session()->get('user'));
@@ -27,7 +31,7 @@ Class SubjectController extends Controller
     {
         $subject = new \App\Http\Models\subject();
         $subject->delete($id);
-        //lots of work here...
+        //TODO: update relationships to null...
 
         $this->list();
     }
@@ -55,7 +59,8 @@ Class SubjectController extends Controller
         $subject = new \App\Http\Models\subject();
         $data = $subject->toggleActive($id);
 
-        if(!$data){
+        if(!$data)
+        {
             echo "0";
             return;
         }
@@ -67,13 +72,18 @@ Class SubjectController extends Controller
     public function edit($data)
     {        
         $subject = new \App\Http\Models\subject();
+        
         if(is_array($data))
+        {
             $data = $subject->getById($data['id']);
-        else
+        } else {
             $data = $subject->getById($data);
+        }
 
         if(!$data)
+        {
             Core::smarty()->assign('_MESSAGE', 'NOT_FOUND');
+        }
 
         Core::smarty()->assign('_RS', $data);
 
@@ -98,11 +108,12 @@ Class SubjectController extends Controller
         $subject = new \App\Http\Models\subject();
         $id = $subject->insert($_POST);
 
-        if($id){
-            Core::smarty()->assign('_MESSAGE', 'INSERT_OK');// array('type'=>'success','text'=>'<i class="fa fa-check"></i> Asignatura insertada'));
+        if($id)
+        {
+            Core::smarty()->assign('_MESSAGE', 'INSERT_OK');
             $this->edit($id);
-        }else{
-            Core::smarty()->assign('_MESSAGE', 'INSERT_KO');//array('type'=>'warning','text'=>'<i class="fa fa-warning"></i> Error al insertar. Verifique los datos'));
+        } else {
+            Core::smarty()->assign('_MESSAGE', 'INSERT_KO');
             Core::smarty()->assign('_ERRORS', $subject->__validations_errors);
             $this->add($_POST);
         }
@@ -144,7 +155,8 @@ Class SubjectController extends Controller
                     '_SECTION_MODULE'       =>$_LANG['Subject']['add_section_module'],
                     '_SECTION_MODULE_URL'   =>Core::router()->generate('subjects'), //Link to subjects list
                     '_SECTION_ACTIVITY'     =>$_LANG['Subject']['add_section_activity'])
-            );  
+            ); 
+             
         Core::smarty()->assign('_RS', $data);
         //Load section Subject > Add
         Core::smarty()->assign('__controller', 'add');

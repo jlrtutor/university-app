@@ -9,14 +9,5 @@ Class Controller
 
     public function __construct()
     {
-        /*
-        global $_fw;
-
-        $this->instances = $_fw;
-        foreach($this->instances->getAll() as $instance=>$object)
-        {
-            $this->$instance = $object;
-        }
-        */
     }
 }

@@ -1,12 +1,14 @@
 <?php
 namespace App\Http\Controllers;
 
+
 use App\Core;
+use App\Http\Models;
 use App\Http\Controllers\Controller;
 use Josantonius\Session\Session;
-use App\Http\Models;
 
 require BASE_PATH . '/app/Http/Models/user.php';
+
 
 Class LoginController extends Controller
 {

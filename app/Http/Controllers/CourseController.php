@@ -1,9 +1,11 @@
 <?php
 namespace App\Http\Controllers;
 
+
 use App\Core;
-use App\Http\Controllers\Controller;
 use App\Http\Models;
+use App\Http\Controllers\Controller;
+
 
 require BASE_PATH . '/app/Http/Models/course.php';
 
@@ -16,7 +18,9 @@ Class CourseController extends Controller
         $this->__module = 'course';
 
         if(!$user = Core::session()->get('user'))
+        {
             header('Location: ' . Core::router()->generate('login'));
+        }
         
         Core::smarty()->assign('__module', $this->__module);
         Core::smarty()->assign('_USER', $user);
@@ -29,9 +33,11 @@ Class CourseController extends Controller
         $res = $course->delete($id);
 
         if($res)
+        {
             Core::smarty()->assign('_MESSAGE', 'DELETE_OK');
-        else
+        } else {
             Core::smarty()->assign('_MESSAGE', 'DELETE_KO');
+        }
            
         $this->add();
     }
@@ -42,9 +48,11 @@ Class CourseController extends Controller
         $res = $course->update($_POST);
 
         if($res)
+        {
             Core::smarty()->assign('_MESSAGE', 'UPDATE_OK');
-        else
+        } else {
             Core::smarty()->assign('_MESSAGE', 'UPDATE_KO');
+        }
            
         $this->edit($_POST['id']);
     }
@@ -58,7 +66,9 @@ Class CourseController extends Controller
         $data = $course->getById($id);
 
         if(!$data)
+        {
             Core::smarty()->assign('_MESSAGE', 'NOT_FOUND');
+        }
 
         Core::smarty()->assign('_RS', $data);
         Core::smarty()->assign('courses', $course->getAll());
@@ -74,6 +84,7 @@ Class CourseController extends Controller
                     '_SECTION_MODULE_URL'   =>Core::router()->generate('course-add'), //Link to students list
                     '_SECTION_ACTIVITY'     =>$_LANG['Course']['edit_section_activity'])
         );
+
         Core::smarty()->assign('__controller', 'add');
         Core::smarty()->assign('_section', 'course.add.tpl');
         Core::smarty()->display('index.tpl');
@@ -84,10 +95,11 @@ Class CourseController extends Controller
         $course = new \App\Http\Models\course();
         $id = $course->insert($_POST);
 
-        if($id){
+        if($id)
+        {
             Core::smarty()->assign('_MESSAGE', 'INSERT_OK');
             $this->edit($id);
-        }else{
+        } else {
             Core::smarty()->assign('_MESSAGE', 'INSERT_KO');
             Core::smarty()->assign('_ERRORS', $course->__validations_errors);
             $this->add($_POST);
@@ -110,7 +122,8 @@ Class CourseController extends Controller
                     '_SECTION_MODULE'       =>$_LANG['Course']['add_section_module'],
                     '_SECTION_MODULE_URL'   =>Core::router()->generate('course-add'), //Link to courses form/list
                     '_SECTION_ACTIVITY'     =>$_LANG['Course']['add_section_activity'] )
-            );  
+            );
+        
         Core::smarty()->assign('_RS', $data);
         Core::smarty()->assign('courses', $course->getAll());
         Core::smarty()->assign('form_action', Core::router()->generate('course-add-post'));

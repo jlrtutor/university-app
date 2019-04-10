@@ -14,7 +14,9 @@ Class UserController extends Controller
     public function index()
     {
         if(!$this->session->get('user'))
+        {
             header('Location: ' . $this->router->generate('login'));
+        }
 
         $this->smarty->assign('_USER', $session->get('user'));
         $this->smarty->display('index.tpl');

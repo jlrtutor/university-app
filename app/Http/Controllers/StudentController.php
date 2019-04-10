@@ -1,17 +1,19 @@
 <?php
 namespace App\Http\Controllers;
 
+
 use App\Core;
-use App\Http\Controllers\Controller;
 use App\Http\Models;
+use App\Http\Controllers\Controller;
+
 
 require BASE_PATH . '/app/Http/Models/student.php';
+
 
 Class StudentController extends Controller
 {    
     public function __construct() 
     {
-        //parent::__construct();
         $this->__module = 'student';
         
         if(!$user = Core::session()->get('user'))
@@ -20,14 +22,14 @@ Class StudentController extends Controller
         Core::smarty()->assign('__module', $this->__module);
         Core::smarty()->assign('__controller', '');
         Core::smarty()->assign('_USER', $user);
-        Core::smarty()->assign('_router', Core::router());    //For Sidebars Links                                                                                                                                                                                                                                                                                                                    
+        Core::smarty()->assign('_router', Core::router());    //For Sidebars Links                                                                
     }
 
     public function delete($id)
     {
         $student = new \App\Http\Models\student();
         $student->delete($id);
-        //lots of work here, delete califications, subscriptions, etc..
+        //TODO: delete califications, subscriptions, etc..
 
         $this->list();
     }
@@ -159,13 +161,16 @@ Class StudentController extends Controller
     public function edit($data)
     {        
         $student = new \App\Http\Models\student();
+
         if(!is_array($data))
         {
             $data = $student->getById($data);
         }
         
         if(!$data)
+        {
             Core::smarty()->assign('_MESSAGE', 'NOT_FOUND');
+        }
 
         Core::smarty()->assign('_RS', $data);
         
@@ -187,12 +192,14 @@ Class StudentController extends Controller
     public function insert()
     {
         $student = new \App\Http\Models\student();
+
         $id = $student->insert($_POST);
 
-        if($id){
+        if($id)
+        {
             Core::smarty()->assign('_MESSAGE', 'INSERT_OK');
             $this->edit($id);
-        }else{
+        } else {
             Core::smarty()->assign('_MESSAGE', 'INSERT_KO');
             Core::smarty()->assign('_ERRORS', $student->__validations_errors);
             $this->add((object)$_POST);

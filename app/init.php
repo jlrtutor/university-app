@@ -2,7 +2,6 @@
 /******************************************************************************
  * Required files
  *****************************************************************************/
-require_once BASE_PATH . 'app/Http/helpers.php';
 require_once BASE_PATH . 'app/core.php';
 require_once BASE_PATH . 'vendor/smarty/smarty/libs/bootstrap.php';
 require_once BASE_PATH . 'vendor/josantonius/session/src/Session.php';
