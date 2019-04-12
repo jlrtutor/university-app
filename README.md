@@ -2,12 +2,14 @@ Courses management application, with subjects, students, grades and registration
 =========================================================================================
 
 Requires PHP 7.x, MySQL 5.4.x 
-v0.1 - 08/04/2019
 ```
+v0.1
+08/04/2019
 (c)Juan Luis Ramírez Tutor
 Email: juanluis.ramirez.tutor@gmail.com
 GitHub: https://github.com/jlrtutor
 LinkedIn: https://es.linkedin.com/in/juan-luis-ramirez-tutor
+Languages supported: english|spanish
 ```
 
 Feel free to use this application to manage a small school, institute, academy
@@ -40,6 +42,9 @@ following file */app/config.php, line 2*
 ```php
 define( 'BASE_URL', '/university-app/');  //WEB directory, external path url
 ```
+5.1. Choose your interface language (spanish default), by changing this line:
+*/app/config, line 10*
+define( 'LANG', 'es-ES');   //es-ES|en-EN
 
 6. LOGIN. You must authenticate before you use this application:
 ```
