@@ -42,9 +42,10 @@ following file */app/config.php, line 2*
 ```php
 define( 'BASE_URL', '/university-app/');  //WEB directory, external path url
 ```
-5.1. Choose your interface language (spanish default), by changing this line:
-*/app/config, line 10*
+   5.1. Choose your interface language (spanish default), by changing */app/config, line 10*:
+```php
 define( 'LANG', 'es-ES');   //es-ES|en-EN
+```
 
 6. LOGIN. You must authenticate before you use this application:
 ```
