@@ -37,8 +37,7 @@ $smarty->assign('_TEMPLATE_DIR_URL', SMARTY_TEMPLATE_BASE_URL);
 $smarty->assign('_TEMPLATE_VIEWS_URL', VIEWS_BASE_URL);
 //Set Language for use in templates
 $smarty->assign('_LANG_CODE', LANG); //Lang code
-\App\Core::set('lang', $_LANG);
-$smarty->assign('_LANG', $_LANG);   //array of words
+$smarty->assign('_LANG', $_LANG);   //$_LANG is an array loaded from /public/lang
 //Init
 \App\Core::set('smarty', $smarty);
 

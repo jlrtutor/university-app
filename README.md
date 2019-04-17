@@ -3,7 +3,7 @@ Courses management application, with subjects, students, grades and registration
 
 Requires PHP 7.x, MySQL 5.4.x 
 ```
-v0.1
+v0.1.1
 08/04/2019
 (c)Juan Luis Ramírez Tutor
 Email: juanluis.ramirez.tutor@gmail.com
@@ -16,6 +16,7 @@ Feel free to use this application to manage a small school, institute, academy
 or similar, where you have to control the student's registration, grades, etc...
 
 Please, report any issue you may have using this application.
+
 
 
 
@@ -42,18 +43,19 @@ following file */app/config.php, line 2*
 ```php
 define( 'BASE_URL', '/university-app/');  //WEB directory, external path url
 ```
-   5.1. Choose your interface language (spanish default), by changing */app/config, line 10*:
+
+6. Locale (spanish default), choose english (en-EN) or spanish language (es-ES) by changing */app/config, line 10*:
 ```php
 define( 'LANG', 'es-ES');   //es-ES|en-EN
 ```
 
-6. LOGIN. You must authenticate before you use this application:
+7. LOGIN. You must authenticate before you use this application:
 ```
     | user: root@root.com
     | password: admin
 ```
 
-7. Make
+8. Make
 ```
 composer install
 ```
@@ -70,10 +72,10 @@ the fields that the model needs and its relationships with other tables or entit
 So, the system can validate data automatically, for example:
 
 ```php
-$this->field('id', 				'integer', ['PK'=>true, 'validate'=>false] );
-$this->field('student_id', 		'integer', ['FK'=>true]);
-$this->field('course_id', 		'integer', ['FK'=>true]);
-$this->field('level', 			'integer');
+$this->field('id',         'integer', ['PK'=>true, 'validate'=>false] );
+$this->field('student_id', 'integer', ['FK'=>true]); //FK of Student table
+$this->field('course_id',  'integer', ['FK'=>true]); //FK of Course table
+$this->field('level',      'integer');
 $this->field('date_of_creation','date', [ 'validate'=>false,
                                           'required'=>false, 
                                           'default'=>date('Y-m-d') ] );
@@ -86,7 +88,7 @@ These relationships make it easier to obtain information from foreign tables:
 ```php
 //Load object Registration
 $obj_registration = new Registration($id);
-//Binding with Students tabla
+//Binding with Students table
 echo "The name of the students is: " . $obj_registration->getStudent()->name;
 echo "And he courses " . $obj_registration->getCourse()->name;
 ```
