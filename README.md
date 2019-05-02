@@ -49,17 +49,18 @@ define( 'BASE_URL', '/university-app/');  //WEB directory, external path url
 define( 'LANG', 'es-ES');   //es-ES|en-EN
 ```
 
-7. LOGIN. You must authenticate before you use this application:
-```
-    | user: root@root.com
-    | password: admin
-```
-
-8. Make
+7. Make
 ```
 composer install
 ```
 to download and install all packages and dependencies.
+
+
+8. LOGIN. Enter URL base. You must authenticate before you use this application:
+```
+    | user: root@root.com
+    | password: admin
+```
 
 
 ##Technical notes
